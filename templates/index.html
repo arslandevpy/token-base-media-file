@@ -1,0 +1,13 @@
+
+{% for object in object_list %}
+    <div>
+        <h3>{{ object.create_at }}</h3> 
+        <a href="{{ object.file.url }}"> {{ object.file.url }} </a>
+        <br/>
+        <form action="{% url 'create_token_url' %}" method="POST">
+            <input type="hidden" name="id" value="{{object.id}}">
+            {% csrf_token %}
+            <button type="submit">Create Token URL</button>
+        </form>
+    </div>
+{% endfor %}
